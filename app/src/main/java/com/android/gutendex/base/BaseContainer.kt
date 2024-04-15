@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.fragment.app.FragmentActivity
 import com.android.gutendex.screens.main.MainScreen
@@ -27,10 +25,7 @@ class BaseContainer : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
             AppTheme {
-                val coroutineScope = rememberCoroutineScope()
-
                 Scaffold(
                     modifier = Modifier
                         .fillMaxSize()
@@ -39,8 +34,6 @@ class BaseContainer : FragmentActivity() {
                     MainScreen()
                 }
             }
-
-
         }
     }
 }

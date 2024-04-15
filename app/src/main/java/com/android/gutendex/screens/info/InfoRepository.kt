@@ -3,11 +3,9 @@ package com.android.gutendex.screens.info
 import com.android.gutendex.models.BookInfo
 import com.android.gutendex.models.toBookInfoDomain
 import com.android.gutendex.networking.ApiClient
-import com.android.gutendex.networking.SingeBookResponseDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-
 import javax.inject.Inject
 
 interface InfoRepository {
@@ -24,7 +22,6 @@ class InfoRepositoryImpl @Inject constructor(private val apiClient: ApiClient) :
     }.catch {
         emit(BookInfoRepositoryResponse.Failed(it.localizedMessage.toString()))
     }
-
 }
 
 sealed class BookInfoRepositoryResponse {

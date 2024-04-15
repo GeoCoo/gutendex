@@ -18,9 +18,9 @@ class ResourceModule {
     @Singleton
     fun provideResourceProvider(impl: ResourceProviderImpl): ResourceProvider = impl
 
-//    @Provides
-//    @Singleton
-//    fun provideCoroutineScopes(): CoroutineScope {
-//        return CoroutineScope(SupervisorJob())
-//    }
+    @Provides
+    @Singleton
+    fun provideCoroutineScopes(): CoroutineScope {
+        return CoroutineScope(SupervisorJob())
+    }
 }

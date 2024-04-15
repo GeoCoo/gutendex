@@ -1,5 +1,7 @@
 package com.android.gutendex.networking
 
+import com.google.gson.annotations.SerializedName
+
 data class BooksResponseDto(
     val count: Int,
     val next: String,
@@ -28,17 +30,13 @@ data class Author(
 )
 
 data class Formats(
-    val textHtml: String,
-    val applicationEpubZip: String,
-    val applicationXMobipocketEbook: String,
-    val applicationRdfXml: String,
-    val imageJpeg: String,
-    val textPlainCharsetUsAscii: String,
-    val applicationOctetStream: String,
-    val textHtmlCharsetUtf8: String?,
-    val textPlainCharsetUtf8: String?,
-    val textPlainCharsetIso88591: String?,
-    val textHtmlCharsetIso88591: String?,
+    @SerializedName("text/html") val txtHmtl: String,
+    @SerializedName("application/epub+zip") val applicationEpub: String,
+    @SerializedName("application/x-mobipocket-ebook") val applicationEbook: String,
+    @SerializedName("application/rdf+xml") val applicationRdf: String,
+    @SerializedName("image/jpeg") val image: String,
+    @SerializedName("application/octet-stream") val applicationStream: String,
+    @SerializedName("text/plain; charset=us-ascii") val textPlain: String
 )
 
 data class Translator(

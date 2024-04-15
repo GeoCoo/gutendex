@@ -26,7 +26,6 @@ class InfoInteractorImpl @Inject constructor(private val infoRepository: InfoRep
             }
         }
     }
-
 }
 
 sealed class BookInfoPartialState {

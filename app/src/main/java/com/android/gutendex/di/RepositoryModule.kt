@@ -1,11 +1,12 @@
 package com.android.gutendex.di
 
+import com.android.gutendex.room.RoomBookRepository
+import com.android.gutendex.room.RoomBookRepositoryImpl
 import com.android.gutendex.screens.books.BooksRepository
 import com.android.gutendex.screens.books.BooksRepositoryImpl
 import com.android.gutendex.screens.info.InfoRepository
 import com.android.gutendex.screens.info.InfoRepositoryImpl
-import com.android.gutendex.screens.main.MainRepository
-import com.android.gutendex.screens.main.MainRepositoryImpl
+
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,9 +16,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class RepositoryModule {
-    @Provides
-    @Singleton
-    fun provideMainRepository(impl: MainRepositoryImpl): MainRepository = impl
 
     @Provides
     @Singleton
@@ -25,7 +23,12 @@ class RepositoryModule {
 
     @Provides
     @Singleton
+    fun provideRoomBooksRepository(impl: RoomBookRepositoryImpl): RoomBookRepository = impl
+
+    @Provides
+    @Singleton
     fun provideInfoRepository(impl: InfoRepositoryImpl): InfoRepository = impl
+
 
 }
 

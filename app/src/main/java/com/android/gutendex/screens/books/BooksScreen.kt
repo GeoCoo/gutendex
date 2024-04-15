@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
@@ -64,7 +65,7 @@ fun BooksScreen(navController: NavController) {
         TopAppBar(colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             titleContentColor = MaterialTheme.colorScheme.surfaceTint
-        ), title = { Text(text = "Gutendex") })
+        ), title = { Text(text = stringResource(id = R.string.app_name)) })
     }) { paddingValues ->
         if (state.value.isLoading == true) {
             Box(
@@ -81,7 +82,6 @@ fun BooksScreen(navController: NavController) {
             modifier = Modifier.padding(top = paddingValues.calculateTopPadding())
         ) {
             state.value.listOfBooks.let { books ->
-                Log.d("BOOKS SIZW", books.size.toString())
                 items(books.size) { index ->
                     BookItem(book = books[index]) { _ ->
                         viewModel.setEvent(Event.NavigateToInfo(books[index].id, navController))

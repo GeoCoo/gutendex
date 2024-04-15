@@ -124,9 +124,7 @@ fun BookInfo(bookInfo: BookInfo?) {
                 Text(text = "Title: ${bookInfo?.title}")
                 Text(text = "Author: ${bookInfo?.author}")
                 Text(text = "AuthorBirth: ${bookInfo?.authorsBirth}")
-                Text(text = "subject: ${bookInfo?.subject}")
-
-
+                Text(text = "subject: ${bookInfo?.subject}")git
             }
         }
     }

@@ -100,7 +100,6 @@ class BooksViewModel @Inject constructor(
                 setState {
                     copy(pages = event.pages + 1)
                 }
-                Log.d("BOOKS UPDATE PAGE", viewState.value.pages.toString())
                 setEffect { Effect.LoadBooks(viewState.value.pages) }
             }
         }
@@ -112,7 +111,6 @@ class BooksViewModel @Inject constructor(
                 when (it) {
                     is BooksPartialState.Success -> {
                         setState { copy(booksDbCount = it.totalCount) }
-                        Log.d("DB BOOKS TOTAL", it.totalCount.toString())
                     }
 
                     is BooksPartialState.Failed -> {
@@ -125,7 +123,6 @@ class BooksViewModel @Inject constructor(
     }
 
     private fun getMoreBooksFromApi(page: Int) {
-        Log.d("API BOOKS PAGE", page.toString())
         viewModelScope.launch(Dispatchers.IO) {
             setState { copy(isLoadingNext = true) }
             booksInteractor.retrieveNextBooks(page).collect {
@@ -161,7 +158,6 @@ class BooksViewModel @Inject constructor(
                 when (it) {
                     is BooksPartialState.Success -> {
                         it.books?.let { books -> booksList.addAll(books) }
-                        Log.d("LIST BOOKS COUNT", booksList.toSet().toList().size.toString())
                         setState {
                             copy(
                                 listOfBooks = booksList.toSet().toList(),
